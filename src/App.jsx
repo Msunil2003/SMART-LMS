@@ -25,10 +25,10 @@ import ChangePassword from './Pages/password/ChangePassword';
 import ResetPassword from './Pages/password/ResetPassword';
 import Checkout from './Pages/payments/Checkout';
 import CheckoutFail from './Pages/payments/CheckoutFail';
+import CheckoutResponse from './Pages/payments/CheckoutResponse.jsx';
 import CheckoutSuccess from './Pages/payments/CheckoutSuccess';
 import BannedUserPage from './Pages/user/BannedUserPage'; // ✅ keep only one import
 import Profile from './Pages/user/Profile';
-
 function App() {
   const location = useLocation();
 
@@ -87,6 +87,7 @@ function App() {
         <Route path="/course/:name/checkout" element={<Checkout />} />
         <Route path="/course/:name/checkout/success" element={<CheckoutSuccess />} />
         <Route path="/course/:name/checkout/fail" element={<CheckoutFail />} />
+        <Route path="/course/all-access/checkout/response" element={<CheckoutResponse />} />
         <Route path="/course/:name/:id/lectures" element={<CourseLectures />} />
       </Route>
     </Routes>
