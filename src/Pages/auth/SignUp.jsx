@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import option3 from '../../assets/Json/option3.json'
 import Particle from '../../components/Particle'
 import HomeLayout from '../../layouts/HomeLayout'
-import { signup } from '../../redux/slices/AuthSlice'
+import { signup } from '../../Redux/slices/AuthSlice'
 function SignUp() {
 
     const dispatch = useDispatch();
