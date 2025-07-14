@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import option2 from '../../assets/Json/option2.json';
+import option2 from '../../assets/json/option2.json';
 import Particle from "../../components/Particle";
 import HomeLayout from "../../layouts/HomeLayout";
 import { forgotPassword, login } from "../../Redux/slices/AuthSlice";
