@@ -15,28 +15,35 @@ function CheckoutResponse() {
     const order_id = query.get("razorpay_order_id");
     const signature = query.get("razorpay_signature");
 
-    async function verifyPayment() {
-      if (payment_id && order_id && signature) {
-        const res = await dispatch(verifyUserPayment({
-          payment_id,
-          order_id,
-          razorpay_signature: signature
-        }));
+    const verifyPayment = async () => {
+      try {
+        if (payment_id && order_id && signature) {
+          const res = await dispatch(
+            verifyUserPayment({ payment_id, order_id, razorpay_signature: signature })
+          );
 
-        if (res?.payload?.success) {
-          navigate('/course/all-access/checkout/success');
+          if (res?.payload?.success) {
+            navigate('/course/all-access/checkout/success');
+          } else {
+            navigate('/course/all-access/checkout/fail');
+          }
         } else {
           navigate('/course/all-access/checkout/fail');
         }
-      } else {
+      } catch (error) {
+        console.error("Verification error:", error);
         navigate('/course/all-access/checkout/fail');
       }
-    }
+    };
 
     verifyPayment();
-  }, []);
+  }, [dispatch, location.search, navigate]);
 
-  return <h1 className="text-center text-xl mt-10">Verifying your payment...</h1>;
+  return (
+    <h1 className="text-center text-xl mt-10 text-yellow-600 font-semibold">
+      Verifying your payment...
+    </h1>
+  );
 }
 
 export default CheckoutResponse;
